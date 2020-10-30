@@ -11,7 +11,7 @@ import org.acme.resteasy.model.Bitcoin;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 @Path("/bitcoins")
-@RegisterRestClient
+@RegisterRestClient(configKey = "bitcoin-api")
 public interface BitcoinService {
 
 	@GET
