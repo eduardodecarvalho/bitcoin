@@ -1,18 +1,37 @@
-version: '3.6'
+version: '3'
+
 services:
-  mysql:
-    image: mysql:5.7.26
-    container_name: bitcoin
+  bitcoin-negotiation-jvm: 
+    image: quarkus/bitcoin-negotiation-jvm:latest
+    build:
+      context: ./
+      dockerfile: src/main/docker/Dockerfile.${QUARKUS_MODE:-jvm}
     environment:
-      - MYSQL_HOST=localhost
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_DATABASE=db_bitcoin
+      QUARKUS_DATASOURCE_URL: jdbc:mysql://mysql-bitcoin-negotiation:3306/bitcoin_negotiation?autoReconnect=true
+    networks:
+      - mysql-db    
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql-bitcoin-negotiation
+
+  mysql-bitcoin-negotiation: 
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bitcoin_negotiation
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
-      - TZ=America/Fortaleza
-    command: mysqld --lower_case_table_names=1 --sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION" --skip-ssl
-    ports:
-      - "3306:3306"
     volumes:
-      - "./data/mysql/:/var/lib/mysql"
+      - mysql.bitcoin.negotiation:/var/lib/mysql
+    ports:
+      - 3307:3306
+    networks:
+      - mysql-db
+
+networks:
+ mysql-db:
+  driver: bridge
+
+volumes:
+  mysql.bitcoin.negotiation:
