@@ -9,7 +9,6 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 public class BitcoinResourceTest {
 
-
     @Test
 	public void getAll_testStatusCode() {
         given()

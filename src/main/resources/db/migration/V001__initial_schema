@@ -1,8 +1,8 @@
 USE bitcoin;
-CREATE TABLE `User` (
+CREATE TABLE `Client` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(50) NOT NULL,
-	`cpf` VARCHAR(14) NOT NULL,
+	`national_id` VARCHAR(14) NOT NULL,
 	`username` VARCHAR(50) NOT NULL,
 	`password` VARCHAR(100) NOT NULL,
 	PRIMARY KEY(`id`)) ENGINE=InnoDB;
@@ -13,6 +13,6 @@ CREATE TABLE `Order` (
 	`operationType` VARCHAR(20) NOT NULL,
 	`date` datetime NOT NULL,
 	`status` VARCHAR(30) NOT NULL,
-	`id_user` int NOT NULL,
+	`id_client` int NOT NULL,
 	PRIMARY KEY (`id`),
-	FOREIGN KEY (`id_user`) REFERENCES `User` (`id`)) ENGINE=InnoDB;
+	FOREIGN KEY (`id_client`) REFERENCES `Client` (`id`)) ENGINE=InnoDB;
