@@ -1,5 +1,6 @@
 package org.acme.resteasy.resources;
 
+import javax.annotation.security.PermitAll;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -12,10 +13,11 @@ import org.acme.resteasy.model.Client;
 public class ClientResource {
 
 	@POST
+	@PermitAll
 	@Transactional
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void post(Client client) {
-		Client.persist(client);
+		Client.save(client);
 	}
 
 }
