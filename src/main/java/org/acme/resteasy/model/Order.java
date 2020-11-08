@@ -21,7 +21,7 @@ public class Order extends PanacheEntityBase {
 	private String operationType;
 	private LocalDate date;
 	private String status;
-	private Integer clientId;
+	private Long clientId;
 
 	public Long getId() {
 		return id;
@@ -63,11 +63,11 @@ public class Order extends PanacheEntityBase {
 	}
 
 	@Column(name = "client_id")
-	public Integer getClientId() {
+	public Long getClientId() {
 		return clientId;
 	}
 
-	public void setClientId(Integer clientId) {
+	public void setClientId(Long clientId) {
 		this.clientId = clientId;
 	}
 
