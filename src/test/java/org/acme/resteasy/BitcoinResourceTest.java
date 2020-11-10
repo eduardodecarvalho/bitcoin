@@ -2,10 +2,12 @@ package org.acme.resteasy;
 
 import static io.restassured.RestAssured.given;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.junit.QuarkusTest;
 
+@Disabled
 @QuarkusTest
 public class BitcoinResourceTest {
 

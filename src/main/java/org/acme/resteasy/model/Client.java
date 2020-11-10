@@ -1,5 +1,6 @@
 package org.acme.resteasy.model;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +17,8 @@ import io.quarkus.security.jpa.Username;
 @UserDefinition
 public class Client extends PanacheEntityBase {
 
-	private static final String USER = "user";
-	private static final String ADMIN = "admin";
+	public static final String USER = "user";
+	public static final String ADMIN = "admin";
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -62,6 +63,7 @@ public class Client extends PanacheEntityBase {
 		this.username = username;
 	}
 
+	@JsonbTransient
 	public String getPassword() {
 		return password;
 	}
