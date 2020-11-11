@@ -21,10 +21,10 @@ public class OrderService {
 	@Inject
 	private OrderRepository orderRepository;
 
-	public void post(SecurityContext securityContext, Order order) {
+	public void post(SecurityContext securityContext, Order order) throws Exception {
 		Client client = clientRepository.findById(order.getClientId()).orElseThrow(null);
 		if (!client.getUsername().equals(securityContext.getUserPrincipal().getName())) {
-			return;
+			throw new Exception();
 		}
 		order.setDate(LocalDate.now());
 		order.setStatus("SENT");

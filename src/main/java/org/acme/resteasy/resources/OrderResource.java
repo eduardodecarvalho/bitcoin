@@ -28,7 +28,7 @@ public class OrderResource {
 	@RolesAllowed(value = Client.USER)
 	@Transactional
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void post(@Context SecurityContext securityContext, Order order) {
+	public void post(@Context SecurityContext securityContext, Order order) throws Exception {
 		orderService.post(securityContext, order);
 	}
 
