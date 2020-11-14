@@ -1,6 +1,6 @@
 # bitcoin project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+This project uses Quarkus, the Supersonic Subatomic Java Framework. Its is a study project to practice this technology. I also mixed a few design patterns, like in the repositories, wich I used JpaRepository and PanacheEntityBase.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
@@ -46,5 +46,3 @@ If you want to learn more about building native executables, please consult http
 # RESTEasy JAX-RS
 
 Guide: https://quarkus.io/guides/rest-json
-
-
